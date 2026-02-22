@@ -1,4 +1,3 @@
-
 import pygame
 import random
 
@@ -102,10 +101,13 @@ while running:
         ball_y -= 8
         ball_x += (target_x-ball_x)*0.1
 
-        if ball_y < 240:
+        if ball_y <= 290:
             moving=False
 
-            if abs(ball_x - keeper_x) > 35:
+            keeper_rect = pygame.Rect(keeper_x-35, 220, 70, 70)
+            ball_rect = pygame.Rect(ball_x-8, ball_y-8, 16, 16)
+
+            if not keeper_rect.colliderect(ball_rect):
                 score += 1
 
             ball_x = start_x
